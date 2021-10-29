@@ -61,13 +61,16 @@ class DoublyLinkedList<T> {
      */
     fun removeNode(node: Node<T>?) {
 
-        if (head == null || node == null) return
+        if (head == null || tail == null || node == null) return
 
-        if (head == node) head = node.next;
+        if (head == node) head = node.next
+
+        if(tail == node) tail = tail!!.previous
 
         if(node.next != null) node.next!!.previous = node.previous
 
         if(node.previous != null) node.previous!!.next = node.next
+
     }
 
     /**
@@ -116,6 +119,7 @@ fun main() {
     doublyLinkedList.reverseTraversal()
     doublyLinkedList.removeNode(doublyLinkedList.head)
     doublyLinkedList.forwardTraversal()
+    doublyLinkedList.reverseTraversal()
     doublyLinkedList.removeNode(doublyLinkedList.tail)
     doublyLinkedList.forwardTraversal()
     doublyLinkedList.reverseTraversal()
